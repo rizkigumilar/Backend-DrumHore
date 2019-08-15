@@ -6,6 +6,7 @@ const xssFilter = require('x-xss-protection')
 const logger = require('morgan')
 const app = express()
 const port = process.env.PORT || 5000
+const Cors = require('cors')
 
 const userRoute = require('./src/routes/users')
 const scoreRoute = require('./src/routes/score')
@@ -29,7 +30,7 @@ const scoreRoute = require('./src/routes/score')
 
 // app.use(express.static(__dirname + '/src/uploads/images'))
 
-// app.use(Cors())
+app.use(Cors())
 // app.options('*', Cors(corsOptions))
 app.use(xssFilter())
 app.use(logger('dev'))
